@@ -22,30 +22,80 @@ console.groupEnd();
 console.groupCollapsed('2 - https://edabit.com/challenge/9KEKJG5PZTFmG3Zau');
 {   
 
+    function addName(obj, name, value) {
+        obj[name] = value;
+        return obj;
+      }
+
+    const result12 = addName({}, "Brutus", 300);
+    const result13 = addName({ piano: 500 }, "Brutus", 400);
+    const result14 = addName({ piano: 500, stereo: 300 }, "Caligula", 440);
+    
+    console.log(result12);
+    console.log(result13);
+    console.log(result14);
 
 }
 console.groupEnd();
 
 console.groupCollapsed('3 - https://edabit.com/challenge/48EJWLhF224na8po3');
 {
-    function generation(x, y) {
-        const generations = {
-            '-3': { m: "great grandfather", f: "great grandmother" },
-            "-2": { m: "grandfather", f: "grandmother" },
-            "-1": { m: "father", f: "mother" },
-            0: { m: "me!", f: "me!" },
-            1: { m: "son", f: "daughter" },
-            2: { m: "grandson", f: "granddaughter" },
-            3: { m: "great grandson", f: "great granddaughter" },
-            };
-                return generations[x][y]
-              }
 
-    const result3 = generation(0, 'f');
-    console.log(result3);}
+    const generationObject = {
+        m: {
+          '-3': 'great grandfather',
+          '-2': 'grandfather',
+          '-1': 'father',
+          0: 'me!',
+          1: 'son',
+          2: 'grandson',
+          3: 'great grandson',
+        },
+        f: {
+          '-3': 'great grandmother',
+          '-2': 'grandmother',
+          '-1': 'mother',
+          0: 'me!',
+          1: 'daughter',
+          2: 'granddaughter',
+          3: 'great granddaughter',
+        }
+      };
+    
+      function generation(gen, sex) {
+        return generationObject[sex][gen];
+      }
+
+      const result20 = generation(2, 'f');
+      const result21 = generation(-3, 'm');
+      const result22 = generation(1, 'f');
+      console.log(result20);
+      console.log(result21);
+      console.log(result22);
+
+    }
+
+    
+    // function generation(x, y) {
+    //     const generations = {
+    //         '-3': { m: "great grandfather", f: "great grandmother" },
+    //         "-2": { m: "grandfather", f: "grandmother" },
+    //         "-1": { m: "father", f: "mother" },
+    //         0: { m: "me!", f: "me!" },
+    //         1: { m: "son", f: "daughter" },
+    //         2: { m: "grandson", f: "granddaughter" },
+    //         3: { m: "great grandson", f: "great granddaughter" },
+    //         };
+    //             return generations[x][y]
+    //           }
+
+    // const result3 = generation(0, 'f');
+    // console.log(result3);}
+
     console.groupEnd();
 
 console.groupCollapsed('4 - https://edabit.com/challenge/i6YqzHcSiPiEQKjeX');
+
 {
     const score = [
         { tile: "N", score: 1 },
@@ -79,6 +129,26 @@ console.groupCollapsed('4 - https://edabit.com/challenge/i6YqzHcSiPiEQKjeX');
         const result5 = maximumScore(score2);
         console.log(result4);
         console.log(result5);
+
+
+    // Using for() cycle
+    // 1. padeklaruojamas pradinis elementas
+    // 2. Pradedamas ciklas
+    // 2.1 Kiekviena iteracija papildo/keičia padeklaruotą kintamajį [1.]
+    // 3. atliekamas galutinis formavimas (nebūtinas)
+    // 4. grąžinama/spausdinama reikšmė 
+
+    function maxScore(tileHand) {
+        let sum = 0;
+        for (let i = 0; i < tileHand.length; i +=1) {
+        sum += tileHand[i].score};
+        return sum; 
+     }
+
+       let result40 = maxScore(score);
+       let result41 = maxScore(score2);
+       console.log(result40);
+       console.log(result41);
 }
 
 console.groupEnd();
@@ -86,6 +156,24 @@ console.groupEnd();
 console.groupCollapsed('5 - https://edabit.com/challenge/8s2jy9hR2TAeQinKD');
 
 {
+
+    function calculateDifference (obj, limit) {
+        const valueArray = Object.values(obj); // paverčiame objektą array, kuriame patalpinta values
+        let sum = 0; // nustatome pradinę išraišką, prie kurios pridėsime iteracijos metu gautas reikšmes
+        for(let i = 0; i < valueArray.length; i += 1) {; // naudojant iteracijos metodą turim pasiekti kiekvieną value esančią array
+        sum += valueArray[i]; 
+        }
+        return sum - limit
+    }
+
+    const result50 = calculateDifference ({ "baseball bat": 20 }, 5);
+    const result51 = calculateDifference ({ skate: 10, painting: 20 }, 19);
+    const result52 = calculateDifference ({ skate: 200, painting: 200, shoes: 1}, 400);
+
+    console.log(result50);
+    console.log(result51);
+    console.log(result52);
+
 
 }
 console.groupEnd();
@@ -177,21 +265,72 @@ console.groupCollapsed('7 - https://edabit.com/challenge/QXWM2oo7rQNiyDsip');
     console.log(result9);
     console.log(result10);
     console.log(result11);
+    console.log('break')
     
     // EASY WAY TO SOLVE THIS FUNCTION
     // function inkLevels(inks) {
 	//return Math.min(...Object.values(inks))
-    }
-    
 
+    // Using 'for' iteration method
+
+
+    function inkLevels(inks) {
+        const arrValues = Object.values(inks); // objekto pavertimas į masyvą (array)
+        let min = arrValues[0]; // pažymimas pradinis lyginimo taškas - 1 masyvo reikšmė (indeksu 0)
+        for(let i = 1; i < arrValues.length; i += 1) { // iteracijos metu einama per elementus
+            if(arrValues[i] < min); // sąlyga, kad būtų rasta mažiausia reikšmė
+        } return min; 
+        }
+
+        const result60 = inkLevels(inkLevels1);
+        const result61 = inkLevels(inkLevels2);
+        const result62 = inkLevels(inkLevels3);
+        console.log(result60);
+        console.log(result61);
+        console.log(result62);
+
+
+      }
 console.groupEnd();
 
 console.groupCollapsed('8 - https://edabit.com/challenge/pLNavsePxJ87t9Nak');
 {
+    // Objects
+    
+    const stolenItems = {
+        tv: 30,
+        skate: 20,
+        stereo: 50
+      };
+      
+    const stolenItems1 = {
+        painting: 20000
+      };
+      
+    const stolenItems2 = {};
+    
 
-}
+
+      function calculateLosses(obj) {
+        const arrNew = Object.values(obj);
+        let sum = 0;
+          for(i = 0; i < arrNew.length; i +=1) {
+            sum = sum + arrNew[i];
+          }
+
+          if(sum > 0) return sum
+          return 'Lucky you'
+
+        } 
+
+        const result70 = calculateLosses(stolenItems);
+        const result71 = calculateLosses(stolenItems1);
+        const result72 = calculateLosses(stolenItems2);
+        console.log(result70);
+        console.log(result71);
+        console.log(result72);
+    }
+
 console.groupEnd();
-
-
 
 
