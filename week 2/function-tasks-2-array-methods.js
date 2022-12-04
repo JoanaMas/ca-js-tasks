@@ -106,7 +106,7 @@ console.group('7. Atrinkti tiktai nelyginių skaičių masyvą');
 console.log('---');
 {
   oddNumbersArray = numbers.filter(function filterOdds(arr) {
-    return arr % 2 === 1 // Kodėl nepaimamos neigiamos nelygybės reikšmės?
+    return arr % 2 === 1 || arr % 2 === -1
   });
 
   console.log({
@@ -143,7 +143,7 @@ console.group('9. Pakelti visas masyvo reikšmes laipsniu \'index\' ir išsaugot
 console.log('---');
 {
   const newArr = numbers.map(function powArrElementsByIndex(arr, index) {
-    return arr * index
+    return arr ** index
   })
 
   console.log({
@@ -231,6 +231,7 @@ console.log('---');
 console.log('---');
 console.groupEnd();
 
+// const numbers = [1, 2, -2, 6, -5, 9, 1.02, 45, -69, 77, -12, 2, 8, -2, -4, 59, 7, -3];
 
 console.group('15. Sukurti funkciją, kuri ima masyvą ir grąžina visų elementų sumą');
 console.log('---');
