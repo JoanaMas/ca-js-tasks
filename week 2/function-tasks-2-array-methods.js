@@ -175,7 +175,7 @@ console.group('11. Suapvalinti visas masyvo reikšmes iki sveikų skaičių ir i
 console.log('---');
 {
   const getIntegers = numbers.map(function absArrElements(arr) {
-    return Math.ceil(arr)
+    return Math.round(arr)
   });
   console.log({
     numbers,
