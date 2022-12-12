@@ -594,7 +594,8 @@ console.group("26. Sukurkite funkciją, kuri pirmu parametrų priimą sakinį, k
 
 
   function replaceSpaceWithDash(str) {
-    return str.replace(' ', '-').replace(' ', '-');
+    // return str.replace(' ', '-').replace(' ', '-');
+    return str.replace(/\s+/g, '-');
   }
 
 
